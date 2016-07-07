@@ -3,8 +3,13 @@
 <% if @league.draft.present? %>
   <p>Draft Date: <%= @league.draft.starts_at.strftime('%c') %></p>
 <% else %>
-  <p>No draft set yet. Set it now.</p>
+  <p>No draft set yet. <%= link_to 'Create it now', new_league_draft_path(@league) %></p>
 <% end %>
+
+<nav class="btn-group">
+  <%= link_to 'Join this league', new_league_team_path(@league), class: 'btn btn-secondary' %>
+  <%= link_to 'Enter Draft', league_draft_path(@league), class: 'btn btn-secondary' %>
+</nav>
 
 <%= link_to 'Join this league', new_league_team_path(@league), class: 'btn btn-success' %>
 
