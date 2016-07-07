@@ -9,9 +9,15 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-light bg-faded">
-        <%= link_to 'Fantasy', root_path, class: 'navbar-brand' %>
+    <header class="navbar navbar-dark bg-primary">
+      <%= link_to 'Fantasy Skeleton', root_path, class: 'navbar-brand' %>
+      <nav class="nav navbar-nav">
+        <% if logged_in? %>
+          <%= link_to 'Users', '#', class: 'nav-item nav-link' %>
+          <%= link_to "Log out", logout_path, method: "delete", class: 'nav-item nav-link' %>
+        <% else %>
+          <%= link_to 'Login', login_path, class: 'nav-item nav-link' %>
+        <% end %>
       </nav>
     </header>
     <% flash.each do |message_type, message| %>
