@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-light bg-faded">
+        <%= link_to 'Fantasy', root_path, class: 'navbar-brand' %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
