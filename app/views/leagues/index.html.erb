@@ -1,0 +1,16 @@
+<h1>Leagues</h1>
+
+<%= link_to 'Create a league', new_league_path, class: 'btn btn-primary' %>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Manager</th>
+  </tr>
+  <% @leagues.each do |league| %>
+    <tr>
+      <td><%= link_to league.name, league_path(league) %></td>
+      <td><%= league.manager.name %></td>
+    </tr>
+  <% end %>
+</table>
