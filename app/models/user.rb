@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :managed_leagues, foreign_key: 'manager_id', class_name: 'League'
+  has_many :teams
+  has_many :leagues, through: :teams
 
   # Returns the hash digest of the given string.
   def User.digest(string)

@@ -1,2 +1,17 @@
 <h1><%= @league.name %></h1>
 <p>Manager: <%= @league.manager.name %></p>
+
+<%= link_to 'Join this league', new_league_team_path(@league), class: 'btn btn-success' %>
+
+<table class="table">
+  <tr>
+    <th>Team Name</th>
+    <th>Team Owner</th>
+  </tr>
+  <% @teams.each do |team| %>
+    <tr>
+      <td><%= link_to team.name, team_path(team) %></td>
+      <td><%= team.user.name %></td>
+    </tr>
+  <% end %>
+</table>
