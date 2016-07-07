@@ -1,0 +1,16 @@
+<%= form_for @athlete do |f| %>
+  <%= render 'shared/error_messages', object: @athlete %>
+
+  <fieldset class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.label :adp %>
+    <%= f.text_field :adp, class: 'form-control' %>
+  </fieldset>
+
+  <%= f.submit %>
+
+<% end %>
