@@ -1,0 +1,8 @@
+<h1>Draft Lobby</h1>
+
+<% if @draft.present? %>
+  <p>Your draft begins soon.</p>
+<% else %>
+<p>You don't have a draft set up yet.</p>
+  <%= link_to 'Build your draft', new_league_draft_path(@league), class: 'btn btn-success' %>
+<% end %>

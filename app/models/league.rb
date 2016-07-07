@@ -5,4 +5,5 @@ class League < ApplicationRecord
   belongs_to :manager, class_name: 'User'
   has_many :teams
   has_many :users, through: :teams
+  has_one :draft
 end

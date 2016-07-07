@@ -1,7 +1,14 @@
 <h1><%= @league.name %></h1>
 <p>Manager: <%= @league.manager.name %></p>
+<% if @league.draft.present? %>
+  <p>Draft Date: <%= @league.draft.starts_at.strftime('%c') %></p>
+<% else %>
+  <p>No draft set yet. Set it now.</p>
+<% end %>
 
 <%= link_to 'Join this league', new_league_team_path(@league), class: 'btn btn-success' %>
+
+
 
 <table class="table">
   <tr>

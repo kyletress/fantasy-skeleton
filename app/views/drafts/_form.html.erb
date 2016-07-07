@@ -1,0 +1,9 @@
+<%= form_for @draft, url: league_draft_path(@league) do |f| %>
+  <fieldset class="form-group">
+    <%= render 'shared/error_messages', object: @draft %>
+    <%= f.label :starts_at %>
+    <%= f.datetime_select :starts_at, class: 'form-control' %>
+  </fieldset>
+
+  <%= f.submit "Create my draft", class: "btn btn-primary" %>
+<% end %>

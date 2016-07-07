@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  league: one
+  starts_at: 2016-07-07 14:37:55
+
+two:
+  league: two
+  starts_at: 2016-07-07 14:37:55
