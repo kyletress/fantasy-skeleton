@@ -2,6 +2,7 @@ class DraftsController < ApplicationController
   def show
     @league = League.find(params[:league_id])
     @draft = @league.draft
+    @athletes = @draft.available_athletes
     @picks = @draft.draft_picks
   end
 

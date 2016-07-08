@@ -38,7 +38,7 @@ class Draft < ApplicationRecord
 
   def move_to_next_pick
     self.move_to_pick(self.next_pick)
-    # self.current_pick.timestamp = Time.now huh? 
+    # self.current_pick.timestamp = Time.now huh?
   end
 
   def make_pick(team, athlete)
