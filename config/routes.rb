@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :draft_picks
   resources :athletes
   root 'static_pages#home'
 
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
 
   resources :leagues, shallow: true do
     resources :teams, except: [:index]
-    resource :draft
+    resource :draft do
+      post 'setup_draft'
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

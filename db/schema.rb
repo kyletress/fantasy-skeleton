@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707223031) do
+ActiveRecord::Schema.define(version: 20160707234552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,26 @@ ActiveRecord::Schema.define(version: 20160707223031) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "draft_picks", force: :cascade do |t|
+    t.integer  "draft_id"
+    t.integer  "athlete_id"
+    t.integer  "team_id"
+    t.integer  "round"
+    t.integer  "pick"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_draft_picks_on_athlete_id", using: :btree
+    t.index ["draft_id"], name: "index_draft_picks_on_draft_id", using: :btree
+    t.index ["team_id"], name: "index_draft_picks_on_team_id", using: :btree
+  end
+
   create_table "drafts", force: :cascade do |t|
     t.integer  "league_id"
     t.datetime "starts_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "round",      default: 1
+    t.integer  "pick",       default: 1
     t.index ["league_id"], name: "index_drafts_on_league_id", using: :btree
   end
 
@@ -43,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160707223031) do
     t.integer  "league_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "pick"
     t.index ["league_id"], name: "index_teams_on_league_id", using: :btree
     t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
   end
@@ -56,6 +72,9 @@ ActiveRecord::Schema.define(version: 20160707223031) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "draft_picks", "athletes"
+  add_foreign_key "draft_picks", "drafts"
+  add_foreign_key "draft_picks", "teams"
   add_foreign_key "drafts", "leagues"
   add_foreign_key "teams", "leagues"
   add_foreign_key "teams", "users"

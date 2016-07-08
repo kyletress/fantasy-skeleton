@@ -1,0 +1,3 @@
+class DraftPicksController < ApplicationController
+  
+end
