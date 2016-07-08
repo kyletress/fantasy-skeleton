@@ -7,18 +7,22 @@
   <%= link_to 'Build your draft', new_league_draft_path(@league), class: 'btn btn-success' %>
 <% end %>
 
-<h2>Draft Order</h2>
-<table class="table table-striped">
-  <tr>
-    <th>Team</th>
-    <th>Round</th>
-    <th>Pick</th>
-  </tr>
-  <% @picks.each do |pick| %>
-  <tr>
-    <td><%= pick.team.name %></td>
-    <td><%= pick.round %></td>
-    <td><%= pick.pick %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Draft Order</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>Team</th>
+        <th>Round</th>
+        <th>Pick</th>
+      </tr>
+      <% @picks.each do |pick| %>
+      <tr>
+        <td><%= pick.team.name %></td>
+        <td><%= pick.round %></td>
+        <td><%= pick.pick %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
