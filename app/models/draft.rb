@@ -48,7 +48,8 @@ class Draft < ApplicationRecord
       self.current_team.draft_picks << pick
       self.move_to_next_pick
     end
-    pick
+    #pick
+    self.save
   end
 
 end

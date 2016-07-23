@@ -15,6 +15,20 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    if @team.update_attributes(team_params)
+      flash[:success] = "Your team has been updated"
+      redirect_to @team
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @league = League.find(params[:league_id])
     @team = @league.teams.build(team_params)
@@ -30,7 +44,7 @@ class TeamsController < ApplicationController
   private
 
     def team_params
-      params.require(:team).permit(:name, :user_id, :league_id)
+      params.require(:team).permit(:name, :user_id, :league_id, :avatar)
     end
 
     def logged_in_user

@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on "turbolinks:load", ->
+  # update the team selector on change
+  $('select.team-toggle').change ->
+    target = $(this).data('target')
+    show = $("option:selected", this).val()
+    $(target).children().addClass('hide')
+    team = 'table[data-team="team_' + show + '"]'
+    $(team).removeClass('hide')
