@@ -4,6 +4,7 @@ class DraftsController < ApplicationController
     @draft = @league.draft
     @athletes = @draft.available_athletes
     @picks = @draft.draft_picks
+    @available_picks = @picks.available.limit(8)
     @teams = @league.teams
     @current_pick = @draft.current_pick
   end

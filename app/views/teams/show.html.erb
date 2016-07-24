@@ -1,3 +1,15 @@
 <h1><%= @team.name %></h1>
 
 <%= image_tag @team.avatar_url.to_s %>
+
+<table class="table table-striped">
+  <tr>
+    <th></th>
+  </tr>
+  <% @team.draft_picks.each do |pick| %>
+    <tr>
+      <td><%= link_to pick.try(:athlete).try(:name), pick.athlete %></td>
+    </tr>
+  <% end %>
+
+</table>

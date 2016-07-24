@@ -2,6 +2,7 @@
 <p>Manager: <%= @league.manager.name %></p>
 <% if @league.draft.present? %>
   <p>Draft Date: <%= @league.draft.starts_at.strftime('%c') %></p>
+  <p>Status: <%= @league.draft.status.humanize %></p>
 <% else %>
   <p>No draft set yet. <%= link_to 'Create it now', new_league_draft_path(@league) %></p>
 <% end %>

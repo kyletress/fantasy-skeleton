@@ -6,7 +6,11 @@ class Draft < ApplicationRecord
 
   validates :league_id, presence: true
   # validate a single draft per league.
+  # validate must have a starts at
 
+  enum status: { scheduled: 0, in_progress: 1, completed: 2 }
+
+  after_create :schedule_draft
 
   def available_athletes
     athlete_ids = self.athletes.map(&:id)
@@ -51,5 +55,12 @@ class Draft < ApplicationRecord
     #pick
     self.save
   end
+
+  private
+
+    def schedule_draft
+      #ScheduleDraftJob.set(wait: 1.minute).perform_later(self)
+      ScheduleDraftJob.set(wait_until: self.starts_at).perform_later(self)
+    end
 
 end

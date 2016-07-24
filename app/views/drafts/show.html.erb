@@ -1,19 +1,26 @@
 <h1>Draft Lobby</h1>
-<!-- <h2 id="time"></h2> -->
+
+<h2>Draft Begins In<br>
+  <span id="time"></span>
+</h2>
 
 <%= link_to 'Return to League', @league %>
 
 <h2>Current Team: <%= @draft.current_team.name %></h2>
 
 <% if @draft.present? %>
-  <p>Your draft begins soon.</p>
+  <% if @draft.available_picks.empty? %>
+    <p>The Draft is Over</p>
+  <% else %>
+    <p>Your draft begins soon.</p>
+  <% end %>
 <% else %>
 <p>You don't have a draft set up yet.</p>
   <%= link_to 'Build your draft', new_league_draft_path(@league), class: 'btn btn-success' %>
 <% end %>
 
 <div class="card-group">
-  <% @picks.group_by(&:round).each do |round, picks| %>
+  <% @available_picks.group_by(&:round).each do |round, picks| %>
     <div class="card text-xs-center">
       <div class="card-block">
         <p class="card-text">Round <%= round %></p>
