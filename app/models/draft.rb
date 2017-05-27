@@ -56,6 +56,10 @@ class Draft < ApplicationRecord
     self.save
   end
 
+  def setup?
+    draft_picks.present?
+  end
+
   private
 
     def schedule_draft
