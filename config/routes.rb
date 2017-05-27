@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
   resources :athletes
   root 'static_pages#home'
 
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
     end
     resources :draft_picks
   end
+
+  mount ActionCable.server, at: '/cable'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
