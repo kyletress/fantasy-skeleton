@@ -8,7 +8,7 @@ var AvailableAthleteTable = React.createClass({
       rows.push(<AvailableAthleteRow athlete={athlete} key={athlete.name} />);
     }.bind(this));
     return (
-      <table className="table table-striped">
+      <table className="table">
         <thead>
           <tr>
             <th>ADP</th>

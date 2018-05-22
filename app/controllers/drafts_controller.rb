@@ -7,6 +7,7 @@ class DraftsController < ApplicationController
     @available_picks = @picks.available.limit(8)
     @teams = @league.teams
     @current_pick = @draft.current_pick
+    render layout: 'draft'
   end
 
   def new

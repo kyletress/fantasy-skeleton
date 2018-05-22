@@ -64,7 +64,7 @@
   </div>
   <div class="col-md-4">
     <h2>Draft Summary</h2>
-    <table class="table table-striped">
+    <table class="table">
       <tr>
         <th>Team</th>
         <th>Round</th>
@@ -88,7 +88,7 @@
 
     <section class="team-table">
       <% @teams.each do |team| %>
-        <table class="table table-striped hide" data-team="team_<%= team.id %>">
+        <table class="table hide" data-team="team_<%= team.id %>">
           <caption><%= team.name %></caption>
           <tr>
             <th>No.</th>

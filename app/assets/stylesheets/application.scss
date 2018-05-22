@@ -13,9 +13,8 @@ body {
 }
 
 .field_with_errors {
-  @extend .has-danger;
   .form-control {
-    color: $state-danger-text;
+    color: red;
   }
 }
 
@@ -84,4 +83,15 @@ body {
   vertical-align: top;
   width: 14.5%;
   display: none;
+}
+
+// DRAFT ROOM
+// #202a2f
+
+.draft-room {
+  background: #263238;
+  color: white;
+  header {
+    background: #202a2f;
+  }
 }
